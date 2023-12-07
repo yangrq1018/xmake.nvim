@@ -30,7 +30,6 @@ function M.setup(user_config)
 	end
 
 	if not catalogue_detection() then
-		require("xmake.log").warn(("No `xmake.lua` has stopped loading in this directory(%s)"):format(work_dir))
 		return
 	end
 
