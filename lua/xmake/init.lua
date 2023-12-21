@@ -16,11 +16,6 @@ function M.setup(user_config)
 	require("xmake.config").init(user_config)
 
 	local work_dir = require("xmake.config").config
-	if type(work_dir) == "string" then
-		vim.cmd("cd " .. work_dir)
-	else
-		vim.cmd("cd " .. table.concat(work_dir, ""))
-	end
 
 	if vim.system == nil then
 		require("xmake.log").error(
@@ -30,6 +25,7 @@ function M.setup(user_config)
 	end
 
 	if not catalogue_detection() then
+		-- require("xmake.log").warn(("No `xmake.lua` in this directory(%s)"):format(work_dir))
 		return
 	end
 
